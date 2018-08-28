@@ -84,9 +84,9 @@ for root, dirs, files in os.walk(sys.argv[1]):
         if not os.path.exists(path):  # if they don't exist
           os.makedirs(path)           # create them
 
-  for name in files:
-    # only looking for files in the images folder, so we check to see if our root ends in images
-    if root.endswith('images'):
+  # only looking for files in the images folder, so we check to see if our root ends in images
+  if root.endswith('images'):
+    for name in files:
       filename = os.path.join(root,name)        # build full filename
       dont_path = os.path.join(root,"Don't Keep")    # build path to dont keep folder
       keep_path = os.path.join(root, "Keep")         # build path to keep folder
