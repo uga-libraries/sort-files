@@ -26,13 +26,16 @@ if len(sys.argv) != 2:          # check for correct number of arguments
 		errors.append("Missing required argument of parent-folder.") # add to errors
 	if len(sys.argv) > 2:         # if too many passed
 		errors.append("Too many arguments.") # add to errors
-
-if not os.path.isdir(sys.argv[1]):   # ensure argument is dictionary
-	errors.append(f"Folder to sort '{sys.argv[1]}' is not a directory.")
+else:                            # were passed one argument
+  if not os.path.isdir(sys.argv[1]):   # ensure argument is directory
+    errors.append(f"Folder to sort '{sys.argv[1]}' is not a directory.")
 
 if len(errors) > 0:             # if we encountered errors
   for error in errors:          # print them
     print(error)
+  print("""Usage: python3 sort-files.py parent_directory_to_process
+       Ex: python3 sort-files.py my_directory
+       Tells script to work on files in my_directory.""")
   exit()                        # exit
 
 # List of keywords that indicate a file should be kept or not.
