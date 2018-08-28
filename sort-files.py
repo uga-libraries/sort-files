@@ -77,20 +77,18 @@ dont = ['agenda', 'code', 'form', 'law', 'letter', 'memoranda', 'minutes', 'pres
 #   files => [file1]
 
 for root, dirs, files in os.walk(sys.argv[1]):
-  for name in dirs:
-    if name == 'images':              # if we've reached an images folder
-      paths = [os.path.join(root,name,'Keep'), os.path.join(root,name,"Don't Keep")] # create paths for new directories
-      for path in paths:              # for the two directories
-        if not os.path.exists(path):  # if they don't exist
-          os.makedirs(path)           # create them
-
   # only looking for files in the images folder, so we check to see if our root ends in images
   if root.endswith('images'):
+    dont_path = os.path.join(root,"Don't Keep")    # build path to dont keep folder
+    keep_path = os.path.join(root, "Keep")         # build path to keep folder
+    for path in [dont_path,keep_path]:             # for the two directories
+      if not os.path.isdir(path):                  # if they don't exist
+        os.makedirs(path)                          # create them
+    
+    # in images, so we want to check each file
     for name in files:
       filename = os.path.join(root,name)        # build full filename
-      dont_path = os.path.join(root,"Don't Keep")    # build path to dont keep folder
-      keep_path = os.path.join(root, "Keep")         # build path to keep folder
-      lower_filename = name.lower()        # use lower case to ensure we match
+      lower_filename = name.lower()             # use lower case to ensure we match
 
       # if powerpoint
       if lower_filename.endswith('.ppt') or lower_filename.endswith('.pptx'):
