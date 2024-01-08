@@ -1,9 +1,13 @@
 # Sort Files
 
-# Purpose
+## Repo Archived
+This script is no longer in use, now that Archive-It is used to crawl state government websites.
+See [Web Download](https://github.com/uga-libraries/web-download) for the current workflow for getting individual state government documents.
+
+## Purpose
 Do a first pass at appraising files obtained through a web crawl by sorting into folders based on keywords in the title and based on file extensions.
 
-# Description
+## Description
 Python script that sorts files into folders to keep and don't keep based on keywords in the file title and based on the file extensions. Files are sorted into folders so that the user can verify the decisions before processing or deleting content.
 
 The script was developed to work with the results of web crawls using the software HTTrack in order to obtain publications from those sites. Therefore, the script is based on the directory structure of HTTrack output:
@@ -20,21 +24,21 @@ The script was developed to work with the results of web crawls using the softwa
      
 The script creates folders "Keep" and "Don't Keep" within each images folder and then sorts the files within that images folder according to the rules.
 
-# Usage
+## Usage
 Download the script to your computer and give it permission so it is executable.
 
 Run the script with the command:  python sort-files.py parentfolder
 
     Where parentfolder is the folder which contains all the folders with files you want to sort.
   
-# Dependencies
+## Dependencies
 
 Python 3
 
-# Initial Author
+## Initial Author
 
 Adriane Hanson, Head of Digital Stewardship, 2018.
 
-# Acknowledgements
+## Acknowledgements
 
 This script was developed and tested with the assistance of Sarah Causey, Map and Government Information Library.
